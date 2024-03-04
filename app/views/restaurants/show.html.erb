@@ -1,0 +1,16 @@
+<h1> <%= @restaurant.name %> </h1>
+<p> <%= @restaurant.category %> </p>
+<p> <%= @restaurant.phone_number %> </p>
+<p> <%= @restaurant.address %> </p>
+<p> <% @restaurant.reviews.each do |review| %>
+      <p> <%= review.rating %> </p>
+      <p> <%= review.content %> </p>
+    <% end %>
+</p>
+
+<!-- 1er le parent puis l'instance qui est nestee -->
+<%= simple_form_for([@restaurant, @review]) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>
